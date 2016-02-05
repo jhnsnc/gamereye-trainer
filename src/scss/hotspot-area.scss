@@ -1,0 +1,141 @@
+@import "mixins";
+
+* {
+	box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body {
+	margin: 5px;
+}
+
+.shape-container {
+	pointer-events: none;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: rgba($red500, 0.0);
+	border: 2px solid transparent;
+	border-radius: 1px;
+	transition: background 300ms, border 400ms;
+	cursor: move;
+
+	.windowDragResizeGrip {
+		pointer-events: none;
+		z-index: 3;
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		&.top-right, &.bottom-right, &.bottom-left, &.top-left {
+			z-index: 4;
+			width: 22px;
+			height: 22px;
+		}
+		&.top {
+			top: -2px;
+			width: 100%;
+			cursor: n-resize;
+		}
+		&.top-right {
+			top: -2px;
+			right: -2px;
+			cursor: ne-resize;
+		}
+		&.right {
+			right: -2px;
+			height: 100%;
+			cursor: e-resize;
+		}
+		&.bottom-right {
+			bottom: -2px;
+			right: -2px;
+			cursor: se-resize;
+		}
+		&.bottom {
+			bottom: -2px;
+			width: 100%;
+			cursor: s-resize;
+		}
+		&.bottom-left {
+			bottom: -2px;
+			left: -2px;
+			cursor: sw-resize;
+		}
+		&.left {
+			left: -2px;
+			height: 100%;
+			cursor: w-resize;
+		}
+		&.top-left {
+			top: -2px;
+			left: -2px;
+			cursor: nw-resize;
+		}
+	}
+
+	h1 {
+		pointer-events: none;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 80px;
+		height: 60px;
+		margin: -30px 0 0 -40px;
+		color: $white;
+		font-family: 'Roboto';
+		font-size: 48px;
+		line-height: 60px;
+		text-align: center;
+		text-shadow: 2px 3px 6px rgba($black, 0.8);
+		opacity: 0.0;
+		transition: opacity 300ms;
+	}
+
+	&.edit-mode-active {
+		pointer-events: all;
+		border-color: $red300;
+		background: rgba($red500, 0.3);
+		box-shadow: 0 0 6px rgba($red500, 0.5), inset 0 0 6px rgba($red500, 0.5);
+
+		.windowDragResizeGrip {
+			pointer-events: all;
+		}
+
+		h1 {
+			opacity: 1.0;
+		}
+
+		&.gaze-active {
+			border-color: $yellow500;
+		}
+	}
+
+	&.alert-active {
+		&.alert-pulse-off {
+			background: rgba($red500, 0.3);
+			box-shadow: 0 0 3px 3px rgba($red500, 0.3);
+			transition: all 500ms cubic-bezier(0.000, 0.000, 0.580, 1.000), border 400ms;
+		}
+		&.alert-pulse-on {
+			background: rgba($red400, 0.5);
+			box-shadow: 0 0 7px 3px rgba($red400, 0.5);
+			transition: all 500ms cubic-bezier(0.420, 0.000, 1.000, 1.000), border 400ms; 
+		}
+
+		//set after alert active for 5 seconds
+		&.alert-emphasize {
+			&.alert-pulse-off {
+				background: rgba($red400, 0.4);
+				box-shadow: 0 0 3px 3px rgba($red400, 0.4);
+				transition: all 300ms cubic-bezier(0.000, 0.000, 0.580, 1.000), border 400ms;
+			}
+			&.alert-pulse-on {
+				background: rgba($red300, 0.65);
+				box-shadow: 0 0 7px 3px rgba($red300, 0.65);
+				transition: all 300ms cubic-bezier(0.420, 0.000, 1.000, 1.000), border 400ms; 
+			}
+		}
+	}
+}

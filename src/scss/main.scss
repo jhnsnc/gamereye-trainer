@@ -1,0 +1,215 @@
+@import "mixins";
+
+$borderColor: #E0E0E0;
+$bgBaseColor: $black;
+$iconInactiveColor: #E0E0E0;
+$iconActiveColor: #F0F0F0;
+$textColor: #F0F0F0;
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body {
+	margin: 0;
+}
+
+.eye-tab {
+	cursor: move;
+	position: absolute;
+	left: 5px;
+	top: 25px;
+	width: 125px;
+	height: 36px;
+	background: rgba($bgBaseColor, 0.5);
+	background: linear-gradient(to bottom, rgba($bgBaseColor,0.5) 0%, rgba($bgBaseColor,0.95) 100%);
+	background-size: 1px 120px;
+	border: 1px solid rgba($borderColor, 0.7);
+	border-radius: 0 13px 13px 0;
+	box-shadow: 0 1px 5px rgba($bgBaseColor, 0.6);
+	transition: all 300ms;
+	&:hover {
+		//background: rgba($bgBaseColor, 0.5);
+		background-position: 80px;
+		border: 1px solid rgba($borderColor, 0.85);
+	}
+
+	.drag-grip-icon {
+		width: 22px;
+		height: 30px;
+		padding: 3px 4px;
+		fill: rgba($iconInactiveColor, 0.85);
+		transition: all 300ms;
+		&:hover {
+			fill: rgba($iconActiveColor, 0.95);
+		}
+	}
+
+	.btn-toggle-eye-tracking {
+		cursor: pointer;
+		position: absolute;
+		right: 40px;
+		top: 0;
+		width: 47px;
+		height: 28px;
+		padding: 4px;
+		.icon {
+			width: 47px;
+			height: 28px;
+			fill: rgba($iconInactiveColor, 0.85);
+			transition: all 300ms;
+			.eye-tracking-on & {
+				&.eye-icon {
+					display: block;
+				}
+				&.eye-icon-closed {
+					display: none;
+				}
+			}
+			.eye-tracking-off & {
+				&.eye-icon {
+					display: none;
+				}
+				&.eye-icon-closed {
+					display: block;
+				}
+			}
+		}
+		&:hover, &:focus {
+			.icon {
+				fill: rgba($iconActiveColor, 0.95);
+			}
+		}
+	}
+	.btn-toggle-config {
+		cursor: pointer;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 26px;
+		height: 26px;
+		padding: 5px 7px;
+		.icon {
+			width: 26px;
+			height: 26px;
+			fill: rgba($iconInactiveColor, 0.85);
+			transition: all 300ms;
+		}
+		&:hover, &:focus {
+			.icon {
+				fill: rgba($iconActiveColor, 0.95);
+			}
+		}
+	}
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0.0;
+		-webkit-transform: translateX(-40px);
+	}
+	100% {
+		opacity: 1.0;
+		-webkit-transform: translateX(0px);
+	}
+}
+
+.config-panel {
+	position: absolute;
+	left: 135px;
+	top: 5px;
+	display: none;
+	width: 300px - 20 - 20;
+	max-height: 600px - 15 - 15;
+	padding: 15px 20px;
+	color: $white;
+	background: rgba($bgBaseColor, 0.5);
+	background: linear-gradient(to bottom, rgba(#333333,0.9) 0%, rgba($bgBaseColor,0.9) 100%);
+	border: 1px solid rgba($borderColor, 0.65);
+	border-radius: 13px;
+	box-shadow: 0 1px 5px rgba($bgBaseColor, 0.6);
+	-webkit-animation-fill-mode: both;
+	-webkit-animation-duration: 500ms;
+	-webkit-animation-name: fadeIn;
+
+	.show-config & {
+		display: block;
+	}
+
+	.btn-toggle-config {
+		cursor: pointer;
+		position: absolute;
+		right: 1px;
+		top: 0px;
+		display: block;
+		width: 24px;
+		height: 24px;
+		color: $textColor;
+		color: rgba($textColor, 0.85);
+		font-family: 'Roboto';
+		font-size: 1.4rem;
+		font-weight: 300;
+		line-height: 24px;
+		text-align: center;
+		&:hover, &:focus {
+			color: #ffaf0f;
+		}
+	}
+
+	h1 {
+		margin: 0 0 30px;
+		color: $textColor;
+		font-family: 'Roboto';
+		font-size: 1.8rem;
+		font-weight: 400;
+		letter-spacing: 1px;
+	}
+
+	.label-left {
+		width: 120px;
+		padding: 10px 0;
+		margin: 0;
+		float: left;
+		clear: both;
+		color: $textColor;
+		font-family: 'Roboto';
+		font-size: 1.2rem;
+		font-weight: 300;
+		text-align: right;
+	}
+	.split-selector {
+		padding: 8px 0 8px 20px;
+		margin: 0;
+		float: left;
+		.ui-button-text-only .ui-button-text {
+			min-width: 40px;
+			padding: 0.1em 0.5em;
+			font-family: 'Roboto';
+			font-weight: 500;
+		}
+		&.narrow-buttons {
+			.ui-button-text-only .ui-button-text {
+				min-width: 11px;
+			}
+		}
+	}
+	input[type="number"] {
+		width: 115px;
+		height: 27px;
+		padding: 3px 10px;
+		margin: 9px 0 9px 20px;
+		float: left;
+		color: $textColor;
+		font-family: 'Roboto';
+		font-size: 1.0rem;
+		font-weight: 400;
+		background: rgba(#555, 0.5);
+		border: 1px solid #666;
+		&:focus {
+			border: 1px solid #ffaf0f;
+			outline-color: #f58400;
+		}
+	}
+}

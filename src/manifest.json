@@ -1,0 +1,58 @@
+{
+	"manifest_version":1,
+	"type":"WebApp",
+	"meta": {
+		"name":"APP_NAME",
+		"version":"APP_VERSION",
+		"minimum-overwolf-version":"0.81.14",
+		"author":"APP_AUTHOR",
+		"icon":"IconMouseOver.png",
+		"icon_gray":"IconMouseNormal.png",
+		"description":"<p>The best LoL players know to watch their minimaps for incoming ganks. Pro Starcraft players always know how many resources they have. Healers in top raiding guilds always watch party members' health bars.</p><p>This app was designed to help you train yourself to check important areas of your screen regularly in game.</p><p>Configure up to 4 'hotspot' regions on screen and they'll flash to remind you if you haven't looked at them recently. Simply look at the flashing area on screen and its timer will reset. Each hotspot has its own timer and can be customized independently. When you're out of a match, you can click the eye icon to temporarily suppress the notifications.</p><p>(Note that this app requires the Tobii EyeX hardware in order to track your eye movements. Calibrate your eye tracking with the EyeX Engine software from Tobii before using this app.)</p>"
+	},
+	"data": {
+		"start_window":"main",
+		"windows": {
+			"main": {
+				"file":"html/main.html",
+				"transparent":true,
+				"resizable":true,
+				"size":{"width":440, "height":610}
+			},
+			"hotspot-1": {
+				"file":"html/hotspots/hotspot-1.html",
+				"show_in_taskbar":false,
+				"transparent":true,
+				"resizable":true,
+				"size":{"width":300, "height":100}
+			},
+			"hotspot-2": {
+				"file":"html/hotspots/hotspot-2.html",
+				"show_in_taskbar":false,
+				"transparent":true,
+				"resizable":true,
+				"size":{"width":300, "height":100}
+			},
+			"hotspot-3": {
+				"file":"html/hotspots/hotspot-3.html",
+				"show_in_taskbar":false,
+				"transparent":true,
+				"resizable":true,
+				"size":{"width":300, "height":100}
+			},
+			"hotspot-4": {
+				"file":"html/hotspots/hotspot-4.html",
+				"show_in_taskbar":false,
+				"transparent":true,
+				"resizable":true,
+				"size":{"width":300, "height":100}
+			}
+		},
+		"extra-objects": {
+			"eyex": {
+				"file": "plugins/OverwolfTobii.dll",
+				"class": "Overwolf.Tobii.TobiiHelper"
+			}
+		}
+	}
+}

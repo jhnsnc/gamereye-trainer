@@ -1,0 +1,86 @@
+<html>
+<head>
+	<title>GamerEye Trainer</title>
+
+	<!-- scripts -->
+	<script type="text/javascript" src="../js/lib/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="../js/window-management.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
+	<script type="text/javascript" src="../js/eye-tracking.js"></script>
+	<!-- styles -->
+	<link rel="stylesheet" href="../css/lib/jquery-ui.css" />
+	<link rel="stylesheet" href="../css/lib/jquery-ui-theme.css" />
+	<link rel="stylesheet" href="../css/fonts.css" />
+	<link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+	<div class="eye-tab windowDragGrip">
+		<svg version="1.1" id="drag-grip-icon" class="drag-grip-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="40px" viewBox="0 0 30 40">
+			<ellipse cx="9" cy="9" rx="3.086" ry="3.018"></ellipse>
+			<ellipse cx="21" cy="9" rx="3.085" ry="3.018"></ellipse>
+			<ellipse cx="9" cy="20" rx="3.086" ry="3.018"></ellipse>
+			<ellipse cx="21" cy="20" rx="3.086" ry="3.018"></ellipse>
+			<ellipse cx="9" cy="31" rx="3.086" ry="3.018"></ellipse>
+			<ellipse cx="21" cy="31" rx="3.086" ry="3.018"></ellipse>
+		</svg>
+		<div class="btn-toggle-eye-tracking">
+			<svg version="1.1" id="eye-icon" class="icon eye-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 40">
+				<path d="M28.382,9.545c-6.205,0-11.235,4.718-11.235,10.537s5.03,10.537,11.235,10.537 c6.205,0,11.235-4.719,11.235-10.537S34.587,9.545,28.382,9.545z M30.192,26.572l-1.813-4.412l-1.802,4.414 c-3.031-0.76-5.27-3.375-5.27-6.492c0-0.879,0.183-1.719,0.507-2.488l4.93,1.57l-2.416-4.586c1.148-0.764,2.544-1.217,4.053-1.217 c1.6,0,3.071,0.51,4.256,1.361l-2.33,4.447l4.672-1.498c0.304,0.748,0.477,1.559,0.477,2.41 C35.457,23.197,33.221,25.811,30.192,26.572z"></path>
+				<path d="M28.382,4.09C11.727,4.09,0.302,19.053,0,21.102C0.302,22.85,10.73,35.91,29.018,35.91 S59.396,21.924,60,20.039C59.396,18.154,44.887,4.09,28.382,4.09z M28.867,31.449c-14.509,0-25.239-8.902-26.146-10.348 C3.627,19.203,14.66,8.629,28.867,8.629s26.448,9.461,27.808,11.453C55.314,21.924,43.375,31.449,28.867,31.449z"></path>
+			</svg>
+			<svg version="1.1" id="eye-icon-closed" class="icon eye-icon-closed" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 40">
+				<path d="M47.084,9.505l-2.613,2.614c6.687,2.912,11.391,6.771,12.204,7.963c-1.36,1.842-13.3,11.367-27.808,11.367 c-1.211,0-2.393-0.067-3.547-0.182l-3.864,3.864c2.347,0.489,4.866,0.778,7.562,0.778c18.289,0,30.378-13.986,30.982-15.871 C59.647,18.938,54.549,13.686,47.084,9.505z"/>
+				<path d="M47.94,0.898c-0.781-0.781-2.047-0.781-2.828,0l-5.287,5.288C36.239,4.913,32.369,4.09,28.382,4.09 C11.727,4.09,0.302,19.053,0,21.102c0.202,1.169,4.942,7.389,13.523,11.387l-3.786,3.785c-0.781,0.781-0.781,2.047,0,2.828 c0.391,0.391,0.902,0.586,1.414,0.586s1.024-0.195,1.414-0.586L47.94,3.727C48.722,2.946,48.722,1.68,47.94,0.898z M2.721,21.102 C3.627,19.203,14.66,8.629,28.867,8.629c2.635,0,5.199,0.33,7.642,0.873l-1.854,1.855c-1.791-1.139-3.944-1.813-6.272-1.813 c-6.205,0-11.235,4.719-11.235,10.537c0,2.424,0.887,4.646,2.354,6.428l-2.853,2.853C8.655,26.64,3.347,22.099,2.721,21.102z M22.39,23.621c-0.682-1.025-1.083-2.233-1.083-3.539c0-0.879,0.183-1.719,0.507-2.488l4.93,1.57l-2.416-4.586 c1.148-0.764,2.544-1.217,4.053-1.217c1.243,0,2.404,0.314,3.418,0.852L22.39,23.621z"/>
+				<path d="M30.192,26.572l-0.051-0.125l-3.966,3.966c0.714,0.134,1.451,0.206,2.207,0.206c6.205,0,11.235-4.719,11.235-10.537 c0-0.941-0.145-1.85-0.392-2.719l-3.875,3.875C34.876,23.829,32.837,25.907,30.192,26.572z"/>
+			</svg>
+		</div>
+		<div class="btn-toggle-config">
+			<svg version="1.1" id="gear-icon" class="icon gear-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60">
+				<path d="M 28.432237,0.00451 C 27.79947,0.04784 27.184372,0.14582 26.562658,0.21696 h -0.04211 l -1.487059,8.115482 c -2.424028,0.551991 -4.704254,1.488802 -6.755903,2.761822 L 11.602497,6.292954 C 9.799154,7.69298 8.158152,9.325821 6.716412,11.094264 l 4.631362,6.755903 c -1.406165,2.148943 -2.463682,4.60284 -3.05925,7.180573 -7.1e-5,0.01228 -7.1e-5,0.0404 0,0.0424 L 0.21543,26.347825 C 0.067865,27.553342 0.003,28.799226 0.003,30.044397 c 0,1.018813 0.02813,2.023998 0.127421,3.016745 l 8.073094,1.444632 c 0.574136,2.803497 1.664849,5.421676 3.186651,7.733198 l -4.80131,6.585955 c 1.375068,1.707083 2.962551,3.261323 4.67375,4.631353 l 6.798291,-4.67374 c 2.375975,1.51566 5.028302,2.57844 7.903147,3.10175 L 27.238688,59.915 C 28.144519,59.9974 29.073485,60 30.00059,60 c 1.308832,0 2.559115,-0.0496 3.824053,-0.21245 l 1.529684,-8.20064 c 2.729498,-0.67928 5.293722,-1.8577 7.520468,-3.441655 l 6.543172,4.758915 c 1.696898,-1.44368 3.248609,-3.1031 4.588974,-4.886475 l -4.758922,-6.883497 c 1.288827,-2.225756 2.181705,-4.681673 2.634303,-7.308132 l 8.030706,-1.274685 c 0.07066,-0.83801 0.08436,-1.650747 0.08436,-2.506902 0,-1.487772 -0.173018,-2.946506 -0.382504,-4.376243 L 51.457022,24.181098 C 50.817719,21.820415 49.76876,19.617873 48.440357,17.637531 l 4.80131,-6.585956 C 51.75338,9.231515 50.055689,7.550184 48.185635,6.122706 l -6.92585,4.758922 C 39.269222,9.704357 37.127172,8.8011 34.801389,8.289753 L 33.526744,0.216659 C 32.366586,0.080178 31.196802,0.004213 30.000198,0.004213 c -0.323478,0 -0.656298,-0.0095 -0.977376,0 -0.156458,0.005 -0.311344,-0.0095 -0.467295,0 -0.04211,0.0028 -0.08565,-0.0028 -0.127833,0 z m 1.104777,20.64999 c 0.155317,-0.0084 0.310275,0 0.467454,0 5.029491,0 9.135166,4.105675 9.135166,9.135165 0,5.029491 -4.105675,9.092779 -9.135166,9.092779 -5.029491,0 -9.092777,-4.063288 -9.092777,-9.092779 0,-4.87222 3.813356,-8.891138 8.625323,-9.135165 z"></path>
+			</svg>
+		</div>
+	</div>
+	<div class="config-panel">
+		<a class="btn-toggle-config">&times;</a>
+
+		<h1>Hotspots Setup</h1>
+
+		<h3 class="label-left">Identification:</h3>
+		<div class="edit-mode-selector split-selector">
+			<input type="radio" name="radio-edit-mode" id="radio-edit-mode-off" value="false" /><label for="radio-edit-mode-off">Off</label>
+			<input type="radio" name="radio-edit-mode" id="radio-edit-mode-on" value="true" /><label for="radio-edit-mode-on">On</label>
+		</div>
+
+		<h3 class="label-left">Hotspot:</h3>
+		<div class="hotspot-selector split-selector narrow-buttons">
+			<input type="radio" name="radio-selected-hotspot" id="radio-hotspot-1" value="1" /><label for="radio-hotspot-1">1</label>
+			<input type="radio" name="radio-selected-hotspot" id="radio-hotspot-2" value="2" /><label for="radio-hotspot-2">2</label>
+			<input type="radio" name="radio-selected-hotspot" id="radio-hotspot-3" value="3" /><label for="radio-hotspot-3">3</label>
+			<input type="radio" name="radio-selected-hotspot" id="radio-hotspot-4" value="4" /><label for="radio-hotspot-4">4</label>
+		</div>
+
+		<label class="label-left" for="hotspot-enabled">Enabled:</label>
+		<div class="hotspot-enabled-selector split-selector">
+			<input type="radio" name="radio-hotspot-enabled" id="radio-hotspot-enabled-yes" value="true" /><label for="radio-hotspot-enabled-yes">Yes</label>
+			<input type="radio" name="radio-hotspot-enabled" id="radio-hotspot-enabled-no" value="false" /><label for="radio-hotspot-enabled-no">No</label>
+		</div>
+
+		<label class="label-left" for="hotspot-position-x">X-position:</label>
+		<input type="number" min="-9999" max="9999" id="hotspot-position-x" />
+
+		<label class="label-left" for="hotspot-position-y">Y-position:</label>
+		<input type="number" min="-9999" max="9999" id="hotspot-position-y" />
+
+		<label class="label-left" for="hotspot-width">Width:</label>
+		<input type="number" min="80" max="9999" id="hotspot-width" />
+
+		<label class="label-left" for="hotspot-height">Height:</label>
+		<input type="number" min="80" max="9999" id="hotspot-height" />
+
+		<label class="label-left" for="hotspot-alert-delay">Frequency (s):</label>
+		<input type="number" min="1" max="600" id="hotspot-alert-delay" />
+	</div>
+
+</body>
+</html>
